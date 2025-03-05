@@ -29,7 +29,7 @@ export default function Main() {
               <div
                 className='bg-smoke-700 col-span-full h-[80px] md:col-span-4'
                 key={id}>
-                <Card content={movie}></Card>
+                <Card content={movie} />
               </div>
             );
           })}

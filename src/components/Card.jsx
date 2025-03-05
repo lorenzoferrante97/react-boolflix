@@ -4,5 +4,9 @@ export default function Card(props) {
   // destructuring movie
   const { id, poster_path, title, overview, vote_average } = movie;
 
-  return <h1>hello</h1>;
+  return (
+    <>
+      <div className='flex flex-col bg-red-400'>{id}</div>
+    </>
+  );
 }

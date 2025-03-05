@@ -8,7 +8,7 @@ import Main from "./components/sections/Main";
 
 function App() {
   return (
-    <div className='wrapper'>
+    <div className='wrapper min-h-screen bg-black text-white'>
       <GlobalProvider>
         <Header></Header>
         <Main></Main>

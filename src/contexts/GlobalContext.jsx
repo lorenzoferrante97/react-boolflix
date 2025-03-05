@@ -10,6 +10,12 @@ const GlobalProvider = ({ children }) => {
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [filteredSeries, setFilteredSeries] = useState([]);
 
+  // onChange input
+  const handleField = e => {
+    const { value } = e.target;
+    setSearchQuery(value);
+  };
+
   const value = {};
 
   return <ApiContext.Provider value={value}>{children}</ApiContext.Provider>;

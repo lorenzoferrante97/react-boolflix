@@ -1,5 +1,6 @@
 import { GlobalProvider, useGlobalContext } from "../../contexts/GlobalContext";
 import { useEffect } from "react";
+import Card from "../Card";
 
 export default function Main() {
   const { filteredMovies, filterMovies } = useGlobalContext();
@@ -20,17 +21,18 @@ export default function Main() {
             </p>
           </div>
           {/* movie cards */}
-          {/* {filteredMovies.map(movie => {
-            // destructuring movie
-            const { id, backdrop_path } = movie;
+          {filteredMovies.map(movie => {
+            const { id } = movie;
 
             return (
               // movie col
               <div
                 className='bg-smoke-700 col-span-full h-[80px] md:col-span-4'
-                key={id}></div>
+                key={id}>
+                <Card content={movie}></Card>
+              </div>
             );
-          })} */}
+          })}
         </section>
         {/* filtered series */}
       </main>

@@ -36,7 +36,12 @@ const GlobalProvider = ({ children }) => {
       });
   };
 
-  const value = {};
+  const value = {
+    searchQuery,
+    filteredMovies,
+    handleField,
+    filterMovies
+  };
 
   return <ApiContext.Provider value={value}>{children}</ApiContext.Provider>;
 };

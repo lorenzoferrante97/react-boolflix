@@ -1,7 +1,7 @@
 import { GlobalProvider, useGlobalContext } from "../../contexts/GlobalContext";
 
 export default function Header() {
-  const { searchValue, handleField } = useGlobalContext();
+  const { searchValue, handleField, handleSearch } = useGlobalContext();
 
   return (
     <>
@@ -11,13 +11,16 @@ export default function Header() {
           BoolFlix
         </span>
         {/* search */}
-        <input
-          type='text'
-          placeholder='Cerca un film o serie'
-          className='px-5u py-u min-h-12u font-body-s-regular w-full rounded-md border border-white/40 focus:border-white focus:outline-white md:max-w-[40%]'
-          onChange={handleField}
-          value={searchValue}
-        />
+        <form onSubmit={handleSearch} className='w-full md:max-w-[40%]'>
+          <input
+            type='text'
+            placeholder='Cerca un film o serie'
+            className='px-5u py-u min-h-12u font-body-s-regular w-full rounded-md border border-white/40 focus:border-white focus:outline-white'
+            onChange={handleField}
+            value={searchValue}
+          />
+          <button type='submit'>Cerca</button>
+        </form>
       </header>
     </>
   );

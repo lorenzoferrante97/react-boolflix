@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Card from "../Card";
 
 export default function Main() {
-  const { filteredMovies, filterMovies } = useGlobalContext();
+  const { searchQuery, filteredMovies, filterMovies } = useGlobalContext();
 
   useEffect(() => {
     filterMovies();

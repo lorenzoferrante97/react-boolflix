@@ -22,18 +22,21 @@ const GlobalProvider = ({ children }) => {
   // onChange input
   const handleField = e => {
     const { value } = e.target;
+    console.log(value);
     setSearchValue(value);
   };
 
   // onSubmit search
   const handleSearch = e => {
+    // console.log("searchValue: ", searchValue);
     e.preventDefault();
     setSearchQuery(searchValue);
+    // console.log("searchQuery: ", searchQuery);
   };
 
   // fetch api filtered movies
   const filterMovies = () => {
-    fetch(`${tmdbApiSearchMovies}&query=${searchValue}`)
+    fetch(`${tmdbApiSearchMovies}&query=${searchQuery}`)
       .then(response => response.json())
       .then(data => {
         setFilteredMovies(data.results);

@@ -43,7 +43,9 @@ const GlobalProvider = ({ children }) => {
     filterMovies
   };
 
-  return <ApiContext.Provider value={value}>{children}</ApiContext.Provider>;
+  return (
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
+  );
 };
 
 // custom hook

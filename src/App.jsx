@@ -8,10 +8,12 @@ import Main from "./components/sections/Main";
 
 function App() {
   return (
-    <GlobalProvider>
-      <Header></Header>
-      <Main></Main>
-    </GlobalProvider>
+    <div className='wrapper'>
+      <GlobalProvider>
+        <Header></Header>
+        <Main></Main>
+      </GlobalProvider>
+    </div>
   );
 }
 

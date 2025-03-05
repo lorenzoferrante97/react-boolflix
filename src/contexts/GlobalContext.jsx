@@ -28,7 +28,9 @@ const GlobalProvider = ({ children }) => {
   const filterMovies = () => {
     fetch(`${tmdbApiSearchMovies}&query=${searchQuery}`)
       .then(response => response.json())
-      .then(data => {})
+      .then(data => {
+        setFilteredMovies(data.results);
+      })
       .catch(error => {
         console.error(error);
       });

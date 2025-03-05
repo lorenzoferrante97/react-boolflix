@@ -14,7 +14,7 @@ export default function Header() {
         <input
           type='text'
           placeholder='Cerca un film o serie'
-          className='px-5u py-u min-h-12u font-body-s-regular w-full rounded-md border border-white/40 focus:border-white focus:outline-white'
+          className='px-5u py-u min-h-12u font-body-s-regular w-full rounded-md border border-white/40 focus:border-white focus:outline-white md:max-w-[40%]'
           onChange={handleField}
         />
       </header>

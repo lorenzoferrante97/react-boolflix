@@ -5,6 +5,11 @@ const GlobalContext = createContext();
 
 // create provider
 const GlobalProvider = ({ children }) => {
+  // useState
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredMovies, setFilteredMovies] = useState([]);
+  const [filteredSeries, setFilteredSeries] = useState([]);
+
   const value = {};
 
   return <ApiContext.Provider value={value}>{children}</ApiContext.Provider>;

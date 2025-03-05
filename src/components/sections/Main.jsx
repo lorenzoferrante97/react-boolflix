@@ -1,4 +1,8 @@
+import { GlobalProvider, useGlobalContext } from "../../contexts/GlobalContext";
+
 export default function Main() {
+  const { filteredMovies, filterMovies } = useGlobalContext();
+
   return (
     <>
       <main className='container-fluid bg-smoke-950/100 gap-20u py-10u h-screen'>
@@ -10,6 +14,7 @@ export default function Main() {
               Risultati di ricerca:
             </p>
           </div>
+          {/* movie cards */}
           <div className='bg-smoke-700 col-span-full h-[80px] md:col-span-4'></div>
         </section>
         {/* filtered series */}

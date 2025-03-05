@@ -26,17 +26,16 @@ const GlobalProvider = ({ children }) => {
     setSearchValue(value);
   };
 
-  // onSubmit search
-  const handleSearch = e => {
-    // console.log("searchValue: ", searchValue);
-    e.preventDefault();
-    setSearchQuery(searchValue);
-    // console.log("searchQuery: ", searchQuery);
+  // on submit update searchQuery
+  const handleSearch = (event, value) => {
+    event.preventDefault();
+    console.log("handleSearch value: ", value);
+    setSearchQuery(value);
   };
 
   // fetch api filtered movies
-  const filterMovies = () => {
-    fetch(`${tmdbApiSearchMovies}&query=${searchQuery}`)
+  const filterMovies = query => {
+    fetch(`${tmdbApiSearchMovies}&query=${query}`)
       .then(response => response.json())
       .then(data => {
         setFilteredMovies(data.results);
@@ -48,6 +47,7 @@ const GlobalProvider = ({ children }) => {
 
   const value = {
     searchValue,
+    searchQuery,
     filteredMovies,
     handleField,
     handleSearch,

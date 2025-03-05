@@ -1,4 +1,4 @@
-import { GlobalProvider, useGlobalContext } from "../../contexts/GlobalContext";
+import { useGlobalContext } from "../../contexts/GlobalContext";
 import { useEffect } from "react";
 import Card from "../Card";
 
@@ -6,12 +6,12 @@ export default function Main() {
   const { searchQuery, filteredMovies, filterMovies } = useGlobalContext();
 
   useEffect(() => {
-    filterMovies();
-  });
+    filterMovies(searchQuery);
+  }, [searchQuery]);
 
   return (
     <>
-      <main className='container-fluid bg-smoke-950/100 gap-20u py-10u h-screen'>
+      <main className='container-fluid bg-smoke-950/100 gap-20u py-10u'>
         {/* filtered movies */}
         <section className='row-grid'>
           <div className='col-span-full'>
@@ -21,27 +21,22 @@ export default function Main() {
             </p>
           </div>
           {/* movie cards */}
-          {/* {filteredMovies.map(movie => {
-            const { id } = movie;
-
-            return (
-              // movie col
-              <div
-                className='bg-smoke-700 col-span-full h-[80px] md:col-span-4'
-                key={id}>
-                <Card content={movie} />
-              </div>
-            );
-          })} */}
-
-          {filteredMovies.length <= 0 ? (
-            <div className='h-20u col-span-full'>
+          {filteredMovies.length === 0 ? (
+            <div className='col-span-full'>
               <p className='font-body-s-light text-smoke-400 italic'>
-                Nessun film corrisponde alla tua ricerca
+                Nessun film trovato in base alla tua ricerca
               </p>
             </div>
           ) : (
-            <p>movies</p>
+            filteredMovies.map(movie => {
+              const id = movie.id;
+
+              return (
+                <div className='col-span-full md:col-span-4' key={id}>
+                  <Card content={movie} />
+                </div>
+              );
+            })
           )}
         </section>
         {/* filtered series */}

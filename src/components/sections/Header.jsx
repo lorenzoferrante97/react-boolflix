@@ -1,4 +1,4 @@
-import { GlobalProvider, useGlobalContext } from "../../contexts/GlobalContext";
+import { useGlobalContext } from "../../contexts/GlobalContext";
 
 export default function Header() {
   const { searchValue, handleField, handleSearch } = useGlobalContext();
@@ -11,15 +11,19 @@ export default function Header() {
           BoolFlix
         </span>
         {/* search */}
-        <form onSubmit={handleSearch} className='w-full md:max-w-[40%]'>
+        <form
+          className='w-full md:max-w-[40%]'
+          onSubmit={event => handleSearch(event, searchValue)}>
           <input
             type='text'
             placeholder='Cerca un film o serie'
-            className='px-5u py-u min-h-12u font-body-s-regular w-full rounded-md border border-white/40 focus:border-white focus:outline-white'
+            className='px-5u py-u min-h-12u font-body-s-light w-full rounded-md border border-white/40 focus:border-white focus:outline-white'
             onChange={handleField}
             value={searchValue}
           />
-          <button type='submit'>Cerca</button>
+          <button type='submit' className='min-h-12u'>
+            Cerca
+          </button>
         </form>
       </header>
     </>

@@ -1,6 +1,7 @@
 export default function Card(props) {
   // destructuring props
-  const { movie } = props.content;
+  const movie = props.content;
+  console.log(movie);
   // destructuring movie
   const { id, poster_path, title, overview, vote_average } = movie;
 

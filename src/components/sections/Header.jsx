@@ -1,7 +1,7 @@
 import { GlobalProvider, useGlobalContext } from "../../contexts/GlobalContext";
 
 export default function Header() {
-  const { handleField } = useGlobalContext();
+  const { searchQuery, handleField } = useGlobalContext();
 
   return (
     <>
@@ -16,6 +16,7 @@ export default function Header() {
           placeholder='Cerca un film o serie'
           className='px-5u py-u min-h-12u font-body-s-regular w-full rounded-md border border-white/40 focus:border-white focus:outline-white md:max-w-[40%]'
           onChange={handleField}
+          value={searchQuery}
         />
       </header>
     </>

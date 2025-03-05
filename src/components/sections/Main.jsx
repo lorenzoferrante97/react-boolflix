@@ -7,7 +7,7 @@ export default function Main() {
 
   useEffect(() => {
     filterMovies();
-  }, [filteredMovies]);
+  });
 
   return (
     <>
@@ -21,7 +21,7 @@ export default function Main() {
             </p>
           </div>
           {/* movie cards */}
-          {filteredMovies.map(movie => {
+          {/* {filteredMovies.map(movie => {
             const { id } = movie;
 
             return (
@@ -32,7 +32,17 @@ export default function Main() {
                 <Card content={movie} />
               </div>
             );
-          })}
+          })} */}
+
+          {filteredMovies.length <= 0 ? (
+            <div className='h-20u col-span-full'>
+              <p className='font-body-s-light text-smoke-400 italic'>
+                Nessun film corrisponde alla tua ricerca
+              </p>
+            </div>
+          ) : (
+            <p>movies</p>
+          )}
         </section>
         {/* filtered series */}
       </main>

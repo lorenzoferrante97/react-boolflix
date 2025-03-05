@@ -11,19 +11,12 @@ export default function Header() {
           BoolFlix
         </span>
         {/* search */}
-        <form className='gap-3u flex w-full flex-col md:max-w-[60%] md:flex-row'>
-          <input
-            type='text'
-            placeholder='Cerca un film o serie'
-            className='px-5u py-u min-h-12u font-body-s-regular w-full rounded-md border border-white/40 focus:border-white focus:outline-white'
-            onChange={handleField}
-          />
-          <button
-            type='submit'
-            className='min-h-12u font-body-base-bold px-7u py-4u w-full rounded-full bg-red-400 text-white md:w-fit'>
-            Cerca
-          </button>
-        </form>
+        <input
+          type='text'
+          placeholder='Cerca un film o serie'
+          className='px-5u py-u min-h-12u font-body-s-regular w-full rounded-md border border-white/40 focus:border-white focus:outline-white'
+          onChange={handleField}
+        />
       </header>
     </>
   );

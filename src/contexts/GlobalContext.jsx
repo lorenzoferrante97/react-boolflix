@@ -14,6 +14,7 @@ const GlobalProvider = ({ children }) => {
   const tmdbApiSearchSeries = `${tmdbApiSeriesUrl}&api_key=${tmdbApiToken}`;
 
   // useState
+  const [searchValue, setSearchValue] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [filteredSeries, setFilteredSeries] = useState([]);
@@ -21,12 +22,18 @@ const GlobalProvider = ({ children }) => {
   // onChange input
   const handleField = e => {
     const { value } = e.target;
-    setSearchQuery(value);
+    setSearchValue(value);
+  };
+
+  // onSubmit search
+  const handleSearch = e => {
+    e.preventDefault();
+    setSearchQuery(searchValue);
   };
 
   // fetch api filtered movies
   const filterMovies = () => {
-    fetch(`${tmdbApiSearchMovies}&query=${searchQuery}`)
+    fetch(`${tmdbApiSearchMovies}&query=${searchValue}`)
       .then(response => response.json())
       .then(data => {
         setFilteredMovies(data.results);
@@ -37,9 +44,10 @@ const GlobalProvider = ({ children }) => {
   };
 
   const value = {
-    searchQuery,
+    searchValue,
     filteredMovies,
     handleField,
+    handleSearch,
     filterMovies
   };
 

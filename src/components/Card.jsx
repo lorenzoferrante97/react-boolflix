@@ -1,4 +1,5 @@
 import { GlobalProvider, useGlobalContext } from "../contexts/GlobalContext";
+import { DE, ES, FR, GB, IT } from "country-flag-icons/react/3x2";
 
 export default function Card(props) {
   const { cardHoverState, showInfo, hiddenInfo } = useGlobalContext();
@@ -39,8 +40,8 @@ export default function Card(props) {
         <div
           className={
             isHovered && activeId === id
-              ? "p-3u gap-3u absolute z-20 flex h-full w-full flex-col rounded-lg border border-red-400/50 bg-black/70 backdrop-blur"
-              : "hidden"
+              ? "p-3u gap-3u absolute z-20 flex h-full w-full flex-col rounded-lg border border-red-400/50 bg-black/70 backdrop-blur transition-all"
+              : "invisible"
           }>
           {/* title */}
           <h3 className='font-body-l-bold'>{title}</h3>
@@ -62,7 +63,19 @@ export default function Card(props) {
               Lingua originale
             </p>
             <p className='font-body-s-light text-red-300'>
-              {original_language}
+              {original_language.toLowerCase() === "en" ? (
+                <GB title={original_language} className='max-w-7u' />
+              ) : original_language.toLowerCase() === "it" ? (
+                <IT title={original_language} className='max-w-7u' />
+              ) : original_language.toLowerCase() === "de" ? (
+                <DE title={original_language} className='max-w-7u' />
+              ) : original_language.toLowerCase() === "es" ? (
+                <ES title={original_language} className='max-w-7u' />
+              ) : original_language.toLowerCase() === "fr" ? (
+                <FR title={original_language} className='max-w-7u' />
+              ) : (
+                original_language
+              )}
             </p>
           </div>
         </div>

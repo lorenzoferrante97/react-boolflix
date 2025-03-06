@@ -22,9 +22,17 @@ export default function Card(props) {
   // import image url
   const posterBaseUrl = import.meta.env.VITE_TMDB_API_POSTER_URL;
   const posterUrl = `${posterBaseUrl}${poster_path}`;
+  const posterFallbackUrl =
+    "https://placehold.co/400x600/jpg/red/?text=No+Image&font=Poppins";
 
   const cardBg = {
     backgroundImage: `url(${posterUrl})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center"
+  };
+
+  const fallbackBg = {
+    backgroundImage: `url(${posterFallbackUrl})`,
     backgroundSize: "cover",
     backgroundPosition: "center"
   };
@@ -33,7 +41,11 @@ export default function Card(props) {
     <>
       <div
         className='relative z-10 flex aspect-[2/3] w-full flex-col overflow-hidden rounded-lg'
-        style={cardBg}
+        style={
+          poster_path == "null" || poster_path == undefined
+            ? fallbackBg
+            : cardBg
+        }
         onMouseEnter={() => showInfo(id)}
         onMouseLeave={() => hiddenInfo(id)}>
         {/* card info on hover */}

@@ -1,5 +1,6 @@
 import { GlobalProvider, useGlobalContext } from "../contexts/GlobalContext";
 import { DE, ES, FR, GB, IT } from "country-flag-icons/react/3x2";
+import { Star } from "@phosphor-icons/react";
 
 export default function Card(props) {
   const { cardHoverState, showInfo, hiddenInfo } = useGlobalContext();
@@ -37,6 +38,18 @@ export default function Card(props) {
     backgroundPosition: "center"
   };
 
+  // array stars
+  const rating = [
+    <Star size={16} weight='bold' color='yellow' />,
+    <Star size={16} weight='bold' color='yellow' />,
+    <Star size={16} weight='bold' color='yellow' />,
+    <Star size={16} weight='bold' color='yellow' />,
+    <Star size={16} weight='bold' color='yellow' />
+  ];
+
+  // conversione voto da scala 10 a scala 5
+  const starRating = parseInt((vote_average.toFixed(0) * 5) / 10);
+
   return (
     <>
       <div
@@ -67,7 +80,7 @@ export default function Card(props) {
           {/* rating */}
           <div className='gap-u flex flex-col'>
             <p className='font-body-s-regular text-white uppercase'>Voto</p>
-            <p className='font-body-s-light text-red-300'>{vote_average}</p>
+            <p className='font-body-s-light text-red-300'></p>
           </div>
           {/* lang */}
           <div className='gap-u flex flex-col'>

@@ -1,4 +1,11 @@
+import { GlobalProvider, useGlobalContext } from "../contexts/GlobalContext";
+
 export default function Card(props) {
+  const { cardHoverState, showInfo, hiddenInfo } = useGlobalContext();
+
+  // destructuring hover state
+  const { activeId, isHovered } = cardHoverState;
+
   // destructuring props
   const movie = props.content;
   // destructuring movie
@@ -25,9 +32,16 @@ export default function Card(props) {
     <>
       <div
         className='relative z-10 flex aspect-[2/3] w-full flex-col overflow-hidden rounded-lg'
-        style={cardBg}>
+        style={cardBg}
+        onMouseEnter={() => showInfo(id)}
+        onMouseLeave={() => hiddenInfo(id)}>
         {/* card info on hover */}
-        <div className='p-3u gap-3u absolute z-20 flex h-full w-full flex-col rounded-lg border border-red-400/50 bg-black/70 backdrop-blur'>
+        <div
+          className={
+            isHovered && activeId === id
+              ? "p-3u gap-3u absolute z-20 flex h-full w-full flex-col rounded-lg border border-red-400/50 bg-black/70 backdrop-blur"
+              : "hidden"
+          }>
           {/* title */}
           <h3 className='font-body-l-bold'>{title}</h3>
           {/* original title */}

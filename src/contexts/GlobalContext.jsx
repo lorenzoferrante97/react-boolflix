@@ -18,6 +18,11 @@ const GlobalProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [filteredSeries, setFilteredSeries] = useState([]);
+  // hover status on cards
+  const [cardHoverState, setCardHoverState] = useState({
+    activeId: 0,
+    isHovered: false
+  });
 
   // onChange input
   const handleField = e => {
@@ -45,13 +50,25 @@ const GlobalProvider = ({ children }) => {
       });
   };
 
+  // show card info on hover
+  const showInfo = id => {
+    setCardHoverState({ activeId: id, isHovered: true });
+  };
+  // hidden card info on hover
+  const hiddenInfo = id => {
+    setCardHoverState({ activeId: id, isHovered: false });
+  };
+
   const value = {
     searchValue,
     searchQuery,
     filteredMovies,
     handleField,
     handleSearch,
-    filterMovies
+    filterMovies,
+    cardHoverState,
+    showInfo,
+    hiddenInfo
   };
 
   return (

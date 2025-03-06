@@ -47,7 +47,7 @@ export default function Card(props) {
   return (
     <>
       <div
-        className='relative z-10 flex aspect-[2/3] w-full flex-col overflow-hidden rounded-lg'
+        className='relative z-10 flex aspect-[2/3] w-full flex-col overflow-auto rounded-lg'
         style={
           poster_path == "null" || poster_path == undefined
             ? fallbackBg
@@ -59,7 +59,7 @@ export default function Card(props) {
         <div
           className={
             isHovered && activeId === id
-              ? "p-3u gap-3u absolute z-20 flex h-full w-full flex-col rounded-lg border border-red-400/50 bg-black/70 backdrop-blur transition-all"
+              ? "p-3u gap-3u absolute z-20 flex min-h-full w-full flex-col overflow-y-scroll rounded-lg border border-red-400/50 bg-black/70 backdrop-blur transition-all"
               : "invisible"
           }>
           {/* title */}
@@ -107,6 +107,13 @@ export default function Card(props) {
                 original_language
               )}
             </p>
+          </div>
+          {/* description */}
+          <div className='gap-u flex flex-col'>
+            <p className='font-body-s-regular text-white uppercase'>
+              Descrizione
+            </p>
+            <p className='font-body-s-light text-red-300'>{overview}</p>
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ export default function Main() {
 
   return (
     <>
-      <main className='container-fluid bg-smoke-950/100 gap-20u py-10u'>
+      <main className='container-fluid bg-smoke-950/60 border-smoke-950 gap-20u py-10u px-5u rounded-lg border-2'>
         {/* filtered movies */}
         <section className='row-grid'>
           <div className='col-span-full'>
@@ -32,7 +32,9 @@ export default function Main() {
               const id = movie.id;
 
               return (
-                <div className='col-span-full md:col-span-4' key={id}>
+                <div
+                  className='col-span-full sm:col-span-2 xl:col-span-3'
+                  key={id}>
                   <Card content={movie} />
                 </div>
               );

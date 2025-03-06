@@ -1,6 +1,6 @@
 import { GlobalProvider, useGlobalContext } from "../contexts/GlobalContext";
 import { DE, ES, FR, GB, IT } from "country-flag-icons/react/3x2";
-import { Star } from "@phosphor-icons/react";
+import { SpeakerNone, Star } from "@phosphor-icons/react";
 
 export default function Card(props) {
   const { cardHoverState, showInfo, hiddenInfo } = useGlobalContext();
@@ -39,13 +39,7 @@ export default function Card(props) {
   };
 
   // array stars
-  const rating = [
-    <Star size={16} weight='bold' color='yellow' />,
-    <Star size={16} weight='bold' color='yellow' />,
-    <Star size={16} weight='bold' color='yellow' />,
-    <Star size={16} weight='bold' color='yellow' />,
-    <Star size={16} weight='bold' color='yellow' />
-  ];
+  const starRatingStyle = ["bold", "bold", "bold", "bold", "bold"];
 
   // conversione voto da scala 10 a scala 5
   const starRating = parseInt((vote_average.toFixed(0) * 5) / 10);
@@ -80,6 +74,17 @@ export default function Card(props) {
           {/* rating */}
           <div className='gap-u flex flex-col'>
             <p className='font-body-s-regular text-white uppercase'>Voto</p>
+            <div className='flex items-center'>
+              {starRatingStyle.map((style, i) => {
+                let activeStyle = style;
+                i <= starRating - 1 ? (activeStyle = "fill") : null;
+                return (
+                  <span key={i + 1}>
+                    <Star size={20} weight={activeStyle} color='red' />
+                  </span>
+                );
+              })}
+            </div>
             <p className='font-body-s-light text-red-300'></p>
           </div>
           {/* lang */}

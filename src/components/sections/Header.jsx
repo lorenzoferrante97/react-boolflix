@@ -5,14 +5,14 @@ export default function Header() {
 
   return (
     <>
-      <header className='container-fluid mt-10u max-md:gap-y-5u items-center md:flex-row md:justify-between'>
+      <header className='container-fluid mt-10u max-md:gap-y-5u mb-10u items-center md:flex-row md:justify-between'>
         {/* logo */}
         <span id='logo' className='font-body-l-bold text-red-400'>
           BoolFlix
         </span>
         {/* search */}
         <form
-          className='w-full md:max-w-[40%]'
+          className='gap-3u flex w-full flex-col md:max-w-[40%] md:flex-row'
           onSubmit={event => handleSearch(event, searchValue)}>
           <input
             type='text'
@@ -21,7 +21,9 @@ export default function Header() {
             onChange={handleField}
             value={searchValue}
           />
-          <button type='submit' className='min-h-12u'>
+          <button
+            type='submit'
+            className='min-h-12u px-7u py-4u font-body-base-bold w-full rounded-full bg-red-400 md:w-fit'>
             Cerca
           </button>
         </form>

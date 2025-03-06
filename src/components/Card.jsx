@@ -1,6 +1,6 @@
 import { GlobalProvider, useGlobalContext } from "../contexts/GlobalContext";
 import { DE, ES, FR, GB, IT } from "country-flag-icons/react/3x2";
-import { SpeakerNone, Star } from "@phosphor-icons/react";
+import { Star } from "@phosphor-icons/react";
 
 export default function Card(props) {
   const { cardHoverState, showInfo, hiddenInfo } = useGlobalContext();
@@ -9,17 +9,29 @@ export default function Card(props) {
   const { activeId, isHovered } = cardHoverState;
 
   // destructuring props
-  const movie = props.content;
+
+  let type = props.type;
+  let content = props.content;
+  let title = "";
+  let original_title = "";
+
+  type === "movies"
+    ? ((title = content.title), (original_title = content.original_title))
+    : ((title = content.name), (original_title = content.original_name));
+
+  const { id, poster_path, overview, vote_average, original_language } =
+    content;
+
   // destructuring movie
-  const {
-    id,
-    poster_path,
-    title,
-    original_title,
-    overview,
-    vote_average,
-    original_language
-  } = movie;
+  // const {
+  //   id,
+  //   poster_path,
+  //   title,
+  //   original_title,
+  //   overview,
+  //   vote_average,
+  //   original_language
+  // } = movie;
   // import image url
   const posterBaseUrl = import.meta.env.VITE_TMDB_API_POSTER_URL;
   const posterUrl = `${posterBaseUrl}${poster_path}`;

@@ -49,6 +49,17 @@ const GlobalProvider = ({ children }) => {
         console.error(error);
       });
   };
+  // fetch api filtered movies
+  const filterSeries = query => {
+    fetch(`${tmdbApiSearchSeries}&query=${query}`)
+      .then(response => response.json())
+      .then(data => {
+        setFilteredSeries(data.results);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
 
   // show card info on hover
   const showInfo = id => {
@@ -63,9 +74,11 @@ const GlobalProvider = ({ children }) => {
     searchValue,
     searchQuery,
     filteredMovies,
+    filteredSeries,
     handleField,
     handleSearch,
     filterMovies,
+    filterSeries,
     cardHoverState,
     showInfo,
     hiddenInfo

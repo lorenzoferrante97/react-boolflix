@@ -70,6 +70,11 @@ const GlobalProvider = ({ children }) => {
     setCardHoverState({ activeId: id, isHovered: false });
   };
 
+  // BONUS
+
+  // active genre
+  const [activeGenre, setActiveGenre] = useState("all");
+
   const value = {
     searchValue,
     searchQuery,

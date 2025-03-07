@@ -51,8 +51,20 @@ export default function Main() {
 
         {/* filtered series */}
         <section className='row-grid'>
-          <div className='col-span-full'>
+          <div className='gap-5u col-span-full flex flex-col'>
             <h2 className='font-h2 uppercase'>Serie</h2>
+            {/* select genre */}
+            <div className='gap-2u flex flex-col'>
+              <label htmlFor='genre'>Scegli un genere</label>
+              <select
+                name='genre'
+                id='genre'
+                className='px-5u py-u min-h-12u font-body-s-light w-full rounded-md border border-white/40 focus:border-white focus:outline-white'>
+                <option value='all'>Tutti</option>
+                <option value='Action'>Azione</option>
+                <option value='Adventure'>Avventura</option>
+              </select>
+            </div>
             <p className='font-body-s-light text-smoke-400 uppercase'>
               Risultati di ricerca:
             </p>

@@ -10,6 +10,7 @@ export default function Main() {
     filteredSeries,
     filterSeries,
     activeGenre,
+    getGenreId,
     handleSelect
   } = useGlobalContext();
 
@@ -65,14 +66,16 @@ export default function Main() {
                 value={activeGenre}
                 onChange={handleSelect}>
                 <option value='all'>Tutti</option>
-                <option value='Action'>Azione</option>
-                <option value='Adventure'>Avventura</option>
+                <option value='Action & Adventure'>Azione e Avventura</option>
+                <option value='Animation'>Animazione</option>
               </select>
             </div>
             <p className='font-body-s-light text-smoke-400 uppercase'>
               Risultati di ricerca:
             </p>
           </div>
+          {/* genre selected ? */}
+          {activeGenre !== "all" ? getGenreId(activeGenre) : null}
           {/* series cards */}
           {filteredSeries.length === 0 ? (
             <div className='col-span-full'>

@@ -72,8 +72,14 @@ const GlobalProvider = ({ children }) => {
 
   // BONUS
 
+  const tmdbApiGenresUrl = import.meta.env.VITE_TMDB_API_GENRES_URL;
+  // build api
+  const tmdbApiGenres = `${tmdbApiGenresUrl}&api_key=${tmdbApiToken}`;
+
   // active genre
   const [activeGenre, setActiveGenre] = useState("all");
+  const [allFilteredSeries, setAllFilteredSeries] = useState([]);
+  const [activeGenreId, setActiveGenreId] = useState(0);
 
   // onChange select
   const handleSelect = e => {
@@ -82,6 +88,26 @@ const GlobalProvider = ({ children }) => {
     setActiveGenre(value);
   };
 
+  // get genre id
+  const getGenreId = selectedGenre => {
+    // get genre id
+    fetch(`${tmdbApiGenres}`)
+      .then(response => response.json())
+      .then(data => {
+        const genresList = data.genres;
+        const foundGenre = genresList.find(
+          genre => genre.name === selectedGenre
+        );
+        setActiveGenreId(parseInt(foundGenre.id));
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
+
+  // filter series by active genre
+  const filterSeriesByGenre = (series, genre) => {};
+
   const value = {
     searchValue,
     searchQuery,
@@ -89,6 +115,7 @@ const GlobalProvider = ({ children }) => {
     filteredSeries,
     handleField,
     activeGenre,
+    getGenreId,
     handleSelect,
     handleSearch,
     filterMovies,

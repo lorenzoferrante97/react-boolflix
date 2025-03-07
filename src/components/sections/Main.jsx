@@ -8,7 +8,9 @@ export default function Main() {
     filteredMovies,
     filterMovies,
     filteredSeries,
-    filterSeries
+    filterSeries,
+    activeGenre,
+    handleSelect
   } = useGlobalContext();
 
   useEffect(() => {
@@ -59,7 +61,9 @@ export default function Main() {
               <select
                 name='genre'
                 id='genre'
-                className='px-5u py-u min-h-12u font-body-s-light w-full rounded-md border border-white/40 focus:border-white focus:outline-white'>
+                className='px-5u py-u min-h-12u font-body-s-light w-full rounded-md border border-white/40 focus:border-white focus:outline-white'
+                value={activeGenre}
+                onChange={handleSelect}>
                 <option value='all'>Tutti</option>
                 <option value='Action'>Azione</option>
                 <option value='Adventure'>Avventura</option>

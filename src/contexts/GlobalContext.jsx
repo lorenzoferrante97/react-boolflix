@@ -75,12 +75,21 @@ const GlobalProvider = ({ children }) => {
   // active genre
   const [activeGenre, setActiveGenre] = useState("all");
 
+  // onChange select
+  const handleSelect = e => {
+    const { value } = e.target;
+    console.log(value);
+    setActiveGenre(value);
+  };
+
   const value = {
     searchValue,
     searchQuery,
     filteredMovies,
     filteredSeries,
     handleField,
+    activeGenre,
+    handleSelect,
     handleSearch,
     filterMovies,
     filterSeries,
